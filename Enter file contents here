@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AppForge AI — Créez avec l'IA</title>
+
+  <meta name="description" content="AppForge AI permet de créer des sites web gratuitement et de transformer des idées en applications mobiles grâce à l'intelligence artificielle.">
+
+  <meta name="theme-color" content="#050816">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #050816;
+      color: white;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(5, 8, 22, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      height: 76px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #00e5ff, #4263ff, #9b42ff);
+      box-shadow: 0 0 25px rgba(72, 111, 255, .45);
+    }
+
+    .brand span {
+      background: linear-gradient(90deg, #fff, #65d9ff, #a76dff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #c9cee2;
+      font-size: 14px;
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: white;
+      border: 0;
+      font-size: 27px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 25px 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      background: #2458ff;
+      filter: blur(180px);
+      opacity: .16;
+      pointer-events: none;
+    }
+
+    .glow.one {
+      top: -200px;
+      left: -150px;
+    }
+
+    .glow.two {
+      right: -200px;
+      bottom: -200px;
+      background: #9b35ff;
+    }
+
+    .hero-content {
+      max-width: 1050px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 8px 16px;
+      border: 1px solid rgba(92, 178, 255, .3);
+      background: rgba(55, 130, 255, .08);
+      border-radius: 100px;
+      color: #73d8ff;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(45px, 8vw, 82px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00d9ff, #477cff, #a94dff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #aeb5cb;
+      font-size: 19px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 23px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-weight: 700;
+      transition: .25s;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #147bff, #7a3cff);
+      box-shadow: 0 10px 30px rgba(58, 86, 255, .28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(58, 86, 255, .4);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,.05);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.1);
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       AI BUILDER
+    ========================= */
+
+    section {
+      padding: 100px 25px;
+    }
+
+    .section-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #9ea7bf;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .builder {
+      max-width: 900px;
+      margin: auto;
+      padding: 25px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+
+    .builder-top {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #555;
+    }
+
+    .prompt-box {
+      width: 100%;
+      min-height: 150px;
+      resize: vertical;
+      background: #070b1d;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      color: white;
+      padding: 20px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .prompt-box:focus {
+      border-color: #477cff;
+      box-shadow: 0 0 0 3px rgba(71,124,255,.1);
+    }
+
+    .builder-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .select {
+      background: #080d20;
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(35, 124, 255, .08);
+      border: 1px solid rgba(35,124,255,.2);
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .loader {
+      display: none;
+      margin-top: 20px;
+      color: #65d9ff;
+    }
+
+    .loader.show {
+      display: block;
+    }
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 30px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(88,145,255,.35);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(0,210,255,.18), rgba(135,60,255,.18));
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #9ea7bf;
+      font-size: 14px;
+    }
+
+    /* =========================
+       PRICING
+    ========================= */
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .price-card {
+      padding: 30px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.09);
+      position: relative;
+    }
+
+    .price-card.featured {
+      border-color: #536fff;
+      box-shadow: 0 0 50px rgba(75,89,255,.12);
+    }
+
+    .popular {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(135deg,#147bff,#7a3cff);
+      padding: 5px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 800;
+      margin: 15px 0;
+    }
+
+    .price small {
+      font-size: 14px;
+      color: #8f98b1;
+      font-weight: normal;
+    }
+
+    .features {
+      list-style: none;
+      margin: 25px 0;
+    }
+
+    .features li {
+      color: #adb5ca;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #56d9ff;
+      margin-right: 10px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      text-align: center;
+      padding: 80px 25px;
+      margin: 0 25px 80px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(0,210,255,.16), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(145,60,255,.18), transparent 35%),
+        #090d22;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .cta h2 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #aeb5cb;
+      margin-bottom: 25px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 40px 25px;
+      color: #858ea7;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: white;
+      font-weight: 700;
+    }
+
+    .copyright {
+      font-size: 13px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-box {
+      max-width: 500px;
+      width: 100%;
+      background: #0b1025;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      border: 0;
+      background: none;
+      color: white;
+      font-size: 25px;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .modal-box p {
+      color: #aab2c8;
+      margin-bottom: 20px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      background: #060a19;
+      color: white;
+      border: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: #06091a;
+        flex-direction: column;
+        padding: 25px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .cards,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 34px;
+      }
+
+      .cta h2 {
+        font-size: 35px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .builder {
+        padding: 16px;
+      }
+
+      .builder-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header>
+    <div class="navbar">
+
+      <a href="#accueil" class="brand">
+        <div class="logo">A✦</div>
+        <span>AppForge AI</span>
+      </a>
+
+      <nav id="nav">
+        <a href="#accueil">Accueil</a>
+        <a href="#builder">AI Builder</a>
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#tarifs">Tarifs</a>
+      </nav>
+
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero" id="accueil">
+
+      <div class="glow one"></div>
+      <div class="glow two"></div>
+
+      <div class="hero-content">
+
+        <div class="badge">
+          ✦ Création numérique avec l'intelligence artificielle
+        </div>
+
+        <h1>
+          Décrivez votre idée.<br>
+          <span class="gradient-text">L'IA construit le reste.</span>
+        </h1>
+
+        <p>
+          Créez des sites web gratuitement et transformez vos idées
+          en applications mobiles grâce à l'intelligence artificielle.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#builder" class="btn btn-primary">
+            ✦ Créer avec l'IA
+          </a>
+
+          <a href="#tarifs" class="btn btn-secondary">
+            Voir les tarifs
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         AI BUILDER
+    ========================== -->
+
+    <section id="builder">
+
+      <div class="section-container">
+
+        <div class="section-title">
+
+          <h2>
+            Votre idée devient un projet
+          </h2>
+
+          <p>
+            Décrivez simplement ce que vous voulez créer.
+            AppForge AI analysera votre idée et préparera votre projet.
+          </p>
+
+        </div>
+
+
+        <div class="builder">
+
+          <div class="builder-top">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <textarea
+            id="prompt"
+            class="prompt-box"
+            placeholder="Exemple : Crée un site moderne pour une école avec une page d'accueil, une galerie, les actualités et un formulaire d'inscription..."
+          ></textarea>
+
+          <div class="builder-actions">
+
+            <select id="projectType" class="select">
+
+              <option value="website">
+                🌐 Site web — Gratuit
+              </option>
+
+              <option value="mobile">
+                📱 Application mobile — Payant
+              </option>
+
+            </select>
+
+            <button
+              class="btn btn-primary"
+              onclick="generateProject()"
+            >
+              ✦ Générer mon projet
+            </button>
+
+          </div>
+
+          <div id="loader" class="loader">
+            ⏳ Analyse de votre idée...
+          </div>
+
+          <div id="result" class="result"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section id="fonctionnalites">
+
+      <div class="section-container">
+
+        <div class="section-title">
+
+          <h2>Une plateforme. Plusieurs possibilités.</h2>
+
+          <p>
+            AppForge AI est conçu pour rendre la création numérique
+            plus simple, même pour les débutants.
+          </p>
+
+        </div>
+
+
+        <div class="cards">
+
+          <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>Sites web gratuits</h3>
+
+            <p>
+              Créez des sites modernes et responsives gratuitement
+              à partir d'une simple description.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">📱</div>
+
+            <h3>Applications mobiles</h3>
+
+            <p>
+              Transformez vos idées en projets d'applications mobiles
+              avec une génération assistée par IA.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">🤖</div>
+
+            <h3>Assistant IA</h3>
+
+            <p>
+              Décrivez votre projet en langage naturel et laissez
+              l'intelligence artificielle vous accompagner.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">⚡</div>
+
+            <h3>Rapide</h3>
+
+            <p>
+              Passez rapidement de votre idée à une première
+              maquette de projet.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>Responsive</h3>
+
+            <p>
+              Les interfaces sont pensées pour ordinateur,
+              tablette et smartphone.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">🚀</div>
+
+            <h3>Pour tous</h3>
+
+            <p>
+              Aucune expérience avancée en programmation n'est
+              nécessaire pour commencer.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRICING
+    ========================== -->
+
+    <section id="tarifs">
+
+      <div class="section-container">
+
+        <div class="section-title">
+
+          <h2>Des tarifs simples</h2>
+
+          <p>
+            Les sites web sont gratuits. Les applications mobiles
+            utilisent des offres accessibles.
+          </p>
+
+        </div>
+
+
+        <div class="pricing">
+
+
+          <!-- STARTER -->
+
+          <div class="price-card">
+
+            <h3>Mobile Starter</h3>
+
+            <div class="price">
+              4,99 $
+              <small>/ projet</small>
+            </div>
+
+            <p>
+              Pour commencer un projet mobile.
+            </p>
+
+            <ul class="features">
+
+              <li>Application mobile</li>
+              <li>Android</li>
+              <li>Jusqu'à 10 écrans</li>
+              <li>Prévisualisation</li>
+              <li>Code source</li>
+
+            </ul>
+
+            <button
+              class="btn btn-secondary"
+              onclick="choosePlan('Mobile Starter')"
+            >
+              Choisir
+            </button>
+
+          </div>
+
+
+          <!-- PRO -->
+
+          <div class="price-card featured">
+
+            <div class="popular">
+              POPULAIRE
+            </div>
+
+            <h3>Mobile Pro</h3>
+
+            <div class="price">
+              9,99 $
+              <small>/ projet</small>
+            </div>
+
+            <p>
+              Pour des projets plus complets.
+            </p>
+
+            <ul class="features">
+
+              <li>Jusqu'à 30 écrans</li>
+              <li>Base de données</li>
+              <li>Authentification</li>
+              <li>Notifications</li>
+              <li>API</li>
+              <li>Code source complet</li>
+
+            </ul>
+
+            <button
+              class="btn btn-primary"
+              onclick="choosePlan('Mobile Pro')"
+            >
+              Choisir Pro
+            </button>
+
+          </div>
+
+
+          <!-- BUSINESS -->
+
+          <div class="price-card">
+
+            <h3>Mobile Business</h3>
+
+            <div class="price">
+              19,99 $
+              <small>/ projet</small>
+            </div>
+
+            <p>
+              Pour des projets mobiles avancés.
+            </p>
+
+            <ul class="features">
+
+              <li>Écrans illimités</li>
+              <li>Backend</li>
+              <li>Base de données avancée</li>
+              <li>API</li>
+              <li>Notifications push</li>
+              <li>Android et iOS</li>
+
+            </ul>
+
+            <button
+              class="btn btn-secondary"
+              onclick="choosePlan('Mobile Business')"
+            >
+              Choisir
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- FREE WEBSITE -->
+
+        <div style="
+          margin-top:25px;
+          padding:25px;
+          text-align:center;
+          border-radius:20px;
+          background:rgba(0,210,255,.06);
+          border:1px solid rgba(0,210,255,.15);
+        ">
+
+          <h3>🌐 Création de sites web</h3>
+
+          <p style="color:#aeb5cb;margin-top:8px;">
+            <strong style="color:#65d9ff;font-size:25px;">
+              GRATUIT
+            </strong>
+            <br>
+            Créez vos sites web sans payer.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section>
+
+      <div class="cta">
+
+        <h2>
+          Construisez votre prochaine idée.
+        </h2>
+
+        <p>
+          Commencez gratuitement avec AppForge AI.
+        </p>
+
+        <a href="#builder" class="btn btn-primary">
+          Commencer maintenant →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+
+        <div class="footer-brand">
+          AppForge AI
+        </div>
+
+        <div class="copyright">
+          Décrivez votre idée. L'IA construit le reste.
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> AppForge AI. Tous droits réservés.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       MODAL
+  ========================== -->
+
+  <div class="modal" id="modal">
+
+    <div class="modal-box">
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+      <h2 id="modalTitle">
+        Commencer
+      </h2>
+
+      <p id="modalText">
+        Cette fonctionnalité sera connectée au système
+        de paiement et au backend d'AppForge AI.
+      </p>
+
+      <input
+        class="input"
+        type="email"
+        placeholder="Votre adresse e-mail"
+      >
+
+      <button
+        class="btn btn-primary"
+        style="width:100%;"
+        onclick="closeModal()"
+      >
+        Continuer
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* Année automatique */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Menu mobile */
+
+    function toggleMenu() {
+
+      document
+        .getElementById("nav")
+        .classList
+        .toggle("active");
+
+    }
+
+
+    /* Génération de projet - démonstration */
+
+    function generateProject() {
+
+      const prompt =
+        document.getElementById("prompt").value.trim();
+
+      const type =
+        document.getElementById("projectType").value;
+
+      const loader =
+        document.getElementById("loader");
+
+      const result =
+        document.getElementById("result");
+
+
+      if (!prompt) {
+
+        result.innerHTML =
+          "⚠️ Décris d'abord ton projet dans la zone de texte.";
+
+        result.classList.add("show");
+
+        return;
+
+      }
+
+
+      loader.classList.add("show");
+
+      result.classList.remove("show");
+
+
+      setTimeout(function() {
+
+        loader.classList.remove("show");
+
+
+        if (type === "website") {
+
+          result.innerHTML = `
+            <strong>✨ Projet analysé !</strong>
+            <br><br>
+            Type : Site web
+            <br>
+            Statut : <span style="color:#56d9ff">
+            Prêt pour la génération
+            </span>
+            <br><br>
+            Votre site sera créé gratuitement.
+            <br><br>
+            <button
+              class="btn btn-primary"
+              onclick="alert('Le véritable moteur IA sera connecté prochainement.')"
+            >
+              Générer le site
+            </button>
+          `;
+
+        } else {
+
+          result.innerHTML = `
+            <strong>📱 Projet mobile détecté !</strong>
+            <br><br>
+            Votre idée peut être transformée
+            en application mobile.
+            <br><br>
+            Choisissez une offre pour continuer.
+            <br><br>
+            <button
+              class="btn btn-primary"
+              onclick="document.getElementById('tarifs').scrollIntoView()"
+            >
+              Voir les offres
+            </button>
+          `;
+
+        }
+
+
+        result.classList.add("show");
+
+      }, 1200);
+
+    }
+
+
+    /* Choix d'une offre */
+
+    function choosePlan(plan) {
+
+      document.getElementById("modalTitle").textContent =
+        plan;
+
+      document.getElementById("modalText").textContent =
+        "Vous avez sélectionné " + plan +
+        ". Le système de paiement sera connecté dans la prochaine version.";
+
+      document
+        .getElementById("modal")
+        .classList
+        .add("active");
+
+    }
+
+
+    /* Fermer la fenêtre */
+
+    function closeModal() {
+
+      document
+        .getElementById("modal")
+        .classList
+        .remove("active");
+
+    }
+
+
+    /* Fermer le modal en cliquant dehors */
+
+    document
+      .getElementById("modal")
+      .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+          closeModal();
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>
